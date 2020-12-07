@@ -5,20 +5,17 @@
 
   <style>
     h1{
-  color:rgb(255, 255, 255);
-  font-family: Arial;
-  font-size: 20px;
-  white-space: nowrap; 
-  width: 300px; 
-  border: 1px solid #ffffff;
-  overflow: hidden;
-  text-overflow: clip; 
+  color:rgb(73, 73, 73);
+  font-family: "Arial";
+  font-size: 10px;
+  text-align: center;
+  
 
   
 }
 p{
   color:rgb(255, 255, 255);
-  font-family: Verdana;
+  font-family: "Arial";
   font-size: 10px;
   
 }
@@ -42,54 +39,51 @@ z-index: -9999;
 </head>
 
 <body>
-  <h1>Click Mouse For New Colours</h1>
+  <h1>MOUSE PRESSED FOR STROKE, DOUBLE CLICK TO CLEAR</h1>
   <div id = "p5Canvas"></div>
   <p></p>
 
      <script>
+       
        function setup(){
+        background(255);
 
 let canvas = createCanvas(windowWidth, windowHeight);
 canvas.parent('p5Canvas');
 
 }
 
-function draw(){
-  background(255, 10);
-  clock();
+function doubleClicked() {
+  clear();
+  background(255);
+}
 
-  for(i=0; i<30; i++){
-    for(j=0; j<25; j++){
+function draw(){
+  
+  
+
+  for(i=0; i<30; i+=10){
+    for(j=0; j<25; j+=10){
    
        if(mouseIsPressed) {
-        line(mouseX, mouseY, i*45, j*27);
-        stroke(10*j, 200-j, i*25, 20);
-         strokeWeight(10);
+        line(mouseX, mouseY, i*61, j*32);
+        stroke(10*j, 200-j, i*25);
+         strokeWeight(5);
        } else {
-        line(mouseX, mouseY, i*45, j*27);
+        line(mouseX, mouseY, i*61, j*32);
          stroke(250, 255-j*10, i*10);
          strokeWeight(0.5);
        }
-    } 
-  } 
-}
-function clock()
-{
-  fill(255);
-  textAlign(CENTER, CENTER);
-  textSize(width/4.25);
-  textSize(64);
-  textFont('Verdana');
-  textStyle(BOLD);
-  let Hour = hour();
-  let min = minute();
-  let secs = second()
+       
   
-  if(min < 10)
-    min = "0"+min
-  Hour%=12
-  text(Hour+":"+min+":"+secs, width/2, height/2); 
-}
+       
+    }
+  }
+} 
+  
+
+
+
    
    
 function windowResized(){
